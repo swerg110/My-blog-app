@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{shared/application}"
+>
+<head>
+    <title>Login</title>
+</head>
+<body>
+<section layout:fragment="content">
+        <h2 class="text-center">Login</h2>
+        <form action="#"
+              th:action="@{/login}"
+              method="POST">
+            <div class="row">
+                <label for="email" class="col-2">Email</label>
+                <div class="col-10">
+                    <input class="form-control" id="email" type="text" name="email" placeholder="Email" />
+                </div>
+            </div>
+            <div class="row">
+                <label for="password" class="col-2">Password</label>
+                <div class="col-10">
+                    <input class="form-control" id="password" type="password" name="password" placeholder="Password" />
+                </div>
+            </div>
+            <button class="btn btn-outline-primary" type="submit">Login!</button>
+        </form>
+    </section>
+
+</body>
+</html>

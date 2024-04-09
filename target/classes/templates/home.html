@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{shared/application}"
+>
+<head>
+    <title>Home</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <header class="d-flex justify-content-center py-3">
+        <ul class="nav nav-pills" sec:authorize="!isAuthenticated()">
+            <li class="nav-item"><a class="nav-link" th:href="@{/posts/new}">New Post</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/register}">Register</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/login}">Login</a></li>
+        </ul>
+        <ul class="nav nav-pills" sec:authorize="isAuthenticated()">
+            <li class="nav-item"><a class="nav-link" th:href="@{/posts/new}">New Post</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
+        </ul>
+    </header>
+
+    <div class="posts-container">
+        <div class="post" th:each="post : ${posts}">
+            <h2><a th:href="@{'/posts/' + ${post.id}}" th:text="${post.title}">Title</a></h2>
+            <h5 class="text-muted" th:text="'Written by ' + ${post.account.firstName}">Account First Name</h5>
+            <h5 class="text-muted" th:text="'Published at ' + ${post.createdAt}">Created At</h5>
+            <h5 class="text-muted" th:text="'Updated at ' + ${post.updatedAt}">Updated At</h5>
+            <p th:text="${post.body}">body text</p>
+            <br>
+        </div>
+    </div>
+</section>
+</body>
+</html>

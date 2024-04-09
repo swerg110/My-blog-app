@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{shared/application}"
+>
+<head>
+    <title>Register</title>
+</head>
+<body>
+    <section layout:fragment="content">
+        <h2>Register New Account</h2>
+        <form action="#"
+              th:action="@{/register}"
+              th:object="${account}"
+              method="POST">
+            <div>
+                <label for="firstname">First Name</label>
+                <input id="firstname" type="text" th:field="*{firstName}" placeholder="First Name"/>
+            </div>
+            <div>
+                <label for="lastname">Last Name</label>
+                <input id="lastname" type="text" th:field="*{lastName}" placeholder="Last Name"/>
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input id="email" type="text" th:field="*{email}" placeholder="Email"/>
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input id="password" type="password" th:field="*{password}" placeholder="Password"/>
+            </div>
+            <button type="submit">Register!</button>
+        </form>
+    </section>
+
+</body>
+</html>
